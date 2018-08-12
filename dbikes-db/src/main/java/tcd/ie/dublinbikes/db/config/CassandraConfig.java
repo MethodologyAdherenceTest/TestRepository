@@ -50,3 +50,23 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
 	  public SchemaAction getSchemaAction() {
 	    return SchemaAction.CREATE_IF_NOT_EXISTS;
 	  }
+	  
+	  protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
+	    CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(this.environment
+	      .getProperty("spring.data.cassandra.keyspace-name"));
+	    
+	    return Arrays.asList(new CreateKeyspaceSpecification[] { specification });
+	  }
+	  
+	  protected List<DropKeyspaceSpecification> getKeyspaceDrops() {
+	    return Arrays.asList(new DropKeyspaceSpecification[] { DropKeyspaceSpecification.dropKeyspace(this.environment.getProperty("spring.data.cassandra.keyspace-name")) });
+	  }
+	  
+	  protected String getKeyspaceName() {
+	    return this.environment.getProperty("spring.data.cassandra.keyspace-name");
+	  }
+	  
+	  public String[] getEntityBasePackages() {
+	    return new String[] { "tcd.ie.dublinbikes.db.entity" };
+	  }
+}
