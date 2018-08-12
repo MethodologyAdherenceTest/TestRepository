@@ -29,5 +29,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-quartz')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1208'
+	compile group: 'org.springframework', name: 'spring-context-support'
+	compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
